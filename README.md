@@ -1,22 +1,8 @@
-# Rohith Kumar Mamindla — Portfolio
+# React + Vite
 
-Cloud Engineer based in Edinburgh, UK | AWS | Linux | Python | Building Serverless & EC2 Projects
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Personal portfolio built with React + Vite + Tailwind CSS (based on an inspirational portfolio template, fully re-personalised).
+Currently, two official plugins are available:
 
-- Live portfolio: https://rohithkumarmamindla.vercel.app/
-- GitHub: https://github.com/rohith12kumar
-- LinkedIn: https://www.linkedin.com/in/rohith12kumar/
-- Email: rohithkumarmamindla12@gmail.com
-
-## Sections
-Home · Projects · Experience & Education · Skills · Contact
-
-Featured projects: AWS EC2 Nginx Web Server, Serverless REST API (Lambda + API Gateway + DynamoDB), CI/CD Pipeline (GitHub Actions & AWS), Green Basket, Campus Connect.
-
-## Run locally
-```bash
-npm install
-npm run dev
-```
-Build: `npm run build`
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
