@@ -115,6 +115,40 @@ nav b{font-size:16px}.pill{padding:10px 20px;font-size:15px}.btn{padding:12px 22
 @media(max-width:414px){.w{padding:0 18px}.sel h1{font-size:clamp(22px,7.4vw,30px)}.panel h3{font-size:27px}.nav-name,nav b{font-size:16px}.pill{padding:9px 18px;font-size:14px}h2{font-size:38px}}
 /* small phones 320-375 */
 @media(max-width:375px){.w{padding:0 14px}nav .w{gap:12px}nav b{font-size:14px}.pill{padding:8px 14px;font-size:13px}.sel{padding:18px 12px}.sel h1{font-size:clamp(18px,6.8vw,24px)}h2{font-size:32px}.lead{font-size:17px}.btn{padding:11px 18px;font-size:15px}.tab{padding:12px 14px;font-size:14px}.panel{padding:24px 16px}.panel h3{font-size:24px}.k{padding:9px 14px;font-size:14px}.ent{padding-left:58px}.msg{padding:40px 16px 24px}.li{font-size:15px}}
+
+/* === StackedProjectCards component (ported to vanilla) === */
+#spc{padding-bottom:10vh}
+.spc-card{position:sticky;top:calc(72px + env(safe-area-inset-top,0px));margin-bottom:28px}
+.spc-tab-row{height:44px;position:relative}
+.spc-tab{position:absolute;top:0;height:46px;width:var(--spc-tab-w,150px);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:.95rem;border-radius:14px 14px 0 0;border:0;cursor:pointer;font-family:inherit;padding:0 6px;white-space:nowrap;overflow:hidden}
+.spc-tab:focus-visible{outline:3px solid #fff;outline-offset:-3px}
+.spc-panel{border-radius:0 20px 20px 20px;padding:40px 44px;min-height:380px;display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;box-shadow:0 24px 50px rgba(0,0,0,.35)}
+.spc-panel h3{font-size:clamp(1.8rem,4vw,2.4rem);letter-spacing:-.02em;margin:0 0 14px;font-weight:600}
+.spc-panel p{margin:0 0 20px;line-height:1.55;max-width:46ch;opacity:.88}
+.spc-learned{font-family:'Short Stack',cursive;font-size:1.5rem;margin-bottom:6px}
+.spc-learned-p{margin-bottom:16px!important;font-size:.92rem}
+.spc-chips{display:flex;flex-wrap:wrap;gap:8px;margin:4px 0 24px;padding:0;list-style:none}
+.spc-chips li{font-size:.78rem;font-weight:500;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.35);border:1px solid rgba(0,0,0,.18);color:inherit}
+.spc-actions{display:flex;gap:12px;flex-wrap:wrap}
+.spc-btn{padding:11px 20px;border-radius:999px;font-weight:600;font-size:.9rem;text-decoration:none;border:2px solid var(--ink);font-family:inherit}
+.spc-btn:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.spc-btn-solid{background:var(--ink);color:#fff}
+.spc-shot{position:relative;transform:rotate(-2deg)}
+.spc-shot-frame{background:#fff;border-radius:12px;aspect-ratio:16/10;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.28);padding:10px}
+.spc-tape{position:absolute;top:-14px;right:12%;width:90px;height:26px;background:rgba(255,214,90,.85);transform:rotate(4deg);z-index:1}
+.spc-term{background:#14101F;color:#E8E4F5;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.8rem;line-height:1.75;padding:16px 18px;border-radius:8px;height:100%;overflow:hidden;text-align:left}
+.spc-term .term-path{color:#9A8FC7;display:block;margin-bottom:8px;word-break:break-all}
+.spc-term em{color:#6FD3A0;font-style:normal}
+.spc-term i{color:#F8D660;font-style:normal}
+@media (max-width:820px){
+ .spc-panel{grid-template-columns:1fr;padding:28px 22px;gap:28px;min-height:0}
+ .spc-card{--spc-tab-w:104px}
+ .spc-tab{font-size:.78rem}
+}
+@media (max-width:560px){
+ .spc-card{--spc-tab-w:calc((100vw - 48px)/5)}
+ .spc-tab{font-size:.6rem;padding:0 2px}
+}
 </style><link rel="stylesheet" href="refine.css"></head><body>
 <a href="#top" class="skip">Skip to content</a><nav aria-label="Main navigation"><div class="w"><b><a href="#top">Rohith Kumar Mamindla</a></b><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open navigation">☰</button><div class="l" id="nav-links"><a href="#about">About</a><a href="#work">Work</a><a href="#journey">Journey</a><a href="#toolkit">Toolkit</a></div><a class="pill" href="#contact">Say hi</a></div></nav>
 
@@ -138,7 +172,7 @@ nav b{font-size:16px}.pill{padding:10px 20px;font-size:15px}.btn{padding:12px 22
  <div class="chips"><span class="chip" style="background:var(--pe);transform:rotate(-3deg)">Edinburgh Napier</span><span class="chip" style="background:var(--gr);transform:rotate(2deg)">CLF-C02 in progress</span><span class="chip" style="background:#fff;transform:rotate(-1.5deg)">Open to Cloud / DevOps roles in the UK</span></div></div></div></section>
 
 <section id="work"><div class="w"><div class="ph"><h2>Things I've built</h2><span class="note hand">five projects, three on AWS</span></div>
- <div id="stack"></div></div></section>
+ <div id="spc"></div></div></section>
 
 <section id="journey"><div class="w jr"><div><h2>Version<br>history</h2><p>Every role shipped a new version of me. Open any entry to see what changed.</p></div>
  <div class="card"><header>Rohith's journey<span id="vc"></span></header><div id="ents"></div></div></div></section>
@@ -163,17 +197,13 @@ nav b{font-size:16px}.pill{padding:10px 20px;font-size:15px}.btn{padding:12px 22
 <script>
 const EM="rohithkumarmamindla12@gmail.com",G="https://github.com/rohith12kumar/";
 const P=[
-{t:"Web server",n:"AWS EC2 Nginx Web Server",c:"var(--pu)",dk:0,d:"An Nginx web server deployed on an AWS EC2 instance, reached over SSH and locked down with Security Groups.",s:["EC2","Nginx","Linux","SSH","Security Groups"],r:"aws-ec2-nginx-web-server",cmd:["ssh ec2-user@<em>instance</em>","sudo systemctl status <em>nginx</em>","<i>#</i> Security Groups: 22, 80"]},
-{t:"Serverless API",n:"Serverless REST API — Lambda + DynamoDB",c:"var(--bl)",dk:1,d:"A serverless REST API on AWS Lambda, API Gateway and DynamoDB, tested end to end with Postman.",h:"Sub-50ms cold start and O(1) DynamoDB lookups.",s:["Lambda","API Gateway","DynamoDB","IAM","Python","Postman"],r:"AWS-Serverless-User-API",cmd:["POST /users → <em>Lambda</em>","DynamoDB.get_item(<em>id</em>)","<i>#</i> cold start &lt; 50ms"]},
-{t:"CI/CD",n:"CI/CD Pipeline — GitHub Actions & AWS",c:"var(--ye)",dk:1,d:"A CI/CD pipeline that uses GitHub Actions to deploy to AWS with IAM-based access.",s:["GitHub Actions","AWS IAM","CI/CD"],r:"AWS-Serverless-CI-CD",cmd:["git push <em>main</em>","<i>▸</i> GitHub Actions: build","<i>▸</i> deploy to AWS (IAM)"]},
-{t:"Delivery app",n:"Green Basket — Vegetable Delivery Platform",c:"var(--pe)",dk:1,d:"A full-stack vegetable delivery platform (2024–2025).",s:["Full-stack","2024–2025"],r:"Green-Basket",cmd:["<i>$</i> green-basket","<em>full-stack</em> · 2024–2025"]},
-{t:"College portal",n:"Campus Connect — College Portal",c:"var(--gr)",dk:1,d:"A full-stack college portal (2024).",s:["Full-stack","2024"],r:"Campus-connect",cmd:["<i>$</i> campus-connect","<em>full-stack</em> · 2024"]}];
-function card(i){const p=P[i];const th=P.slice(0,i+1).map((project,index)=>`<button type="button" class="tab ${index===i?'on':''}" data-index="${index}" style="background:${project.c}" aria-label="Go to ${project.n}" onclick="go2(${index})">${project.t}</button>`).join('');
-
-return `<div class="pk"><div class="tabs">${th}</div><div class="panel" style="background:${p.c};color:${p.dk?'var(--ink)':'#fff'}"><div><h3>${p.n}</h3><p>${p.d}</p>${p.h?`<h4>Highlights</h4><p>${p.h}</p>`:""}<div>${p.s.map(x=>`<span class="tag">${x}</span>`).join("")}</div><div style="margin-top:14px"><a class="btn ${p.dk?'d':'f'}" target="_blank" rel="noopener" href="${G+p.r}" style="${p.dk?'':'color:var(--ink)'}">View code</a></div></div>
-<div class="shot"><div class="term"><span class="term-path">github.com/rohith12kumar/${p.r}</span>${p.cmd.join("<br>")}</div></div></div></div>`}
-document.getElementById("stack").innerHTML=P.map((_,i)=>`<div class="project-anchor" id="pw${i}"></div><div class="pw" style="--project-index:${i};z-index:${i+1}">${card(i)}</div>`).join("");
-function go2(j){document.getElementById("pw"+j).scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"instant":"smooth"})}
+{t:"Web server",n:"AWS EC2 Nginx Web Server",hex:"#6A41BD",tx:"#FFFFFF",d:"An Nginx web server deployed on an AWS EC2 instance, reached over SSH and locked down with Security Groups.",l:"Deploying over SSH, running Nginx as a service, and locking an instance down with Security Groups.",s:["EC2","Nginx","Linux","SSH","Security Groups"],r:"aws-ec2-nginx-web-server",cmd:["ssh ec2-user@<em>instance</em>","sudo systemctl status <em>nginx</em>","<i>#</i> Security Groups: 22, 80"]},
+{t:"Serverless API",n:"Serverless REST API — Lambda + DynamoDB",hex:"#5BA0F8",tx:"#1E1536",d:"A serverless REST API on AWS Lambda, API Gateway and DynamoDB, tested end to end with Postman.",l:"Sub-50ms cold start and O(1) DynamoDB lookups.",s:["Lambda","API Gateway","DynamoDB","IAM","Python","Postman"],r:"AWS-Serverless-User-API",cmd:["POST /users → <em>Lambda</em>","DynamoDB.get_item(<em>id</em>)","<i>#</i> cold start &lt; 50ms"]},
+{t:"CI/CD",n:"CI/CD Pipeline — GitHub Actions & AWS",hex:"#F8D660",tx:"#1E1536",d:"A CI/CD pipeline that uses GitHub Actions to deploy to AWS with IAM-based access.",l:"Wiring GitHub Actions to deploy to AWS with IAM-based access.",s:["GitHub Actions","AWS IAM","CI/CD"],r:"AWS-Serverless-CI-CD",cmd:["git push <em>main</em>","<i>▸</i> GitHub Actions: build","<i>▸</i> deploy to AWS (IAM)"]},
+{t:"Delivery app",n:"Green Basket — Vegetable Delivery Platform",hex:"#8B8CF7",tx:"#1E1536",d:"A full-stack vegetable delivery platform (2024–2025).",l:"Building a full-stack platform end to end.",s:["Full-stack","2024–2025"],r:"Green-Basket",cmd:["<i>$</i> green-basket","<em>full-stack</em> · 2024–2025"]},
+{t:"College portal",n:"Campus Connect — College Portal",hex:"#6FD3A0",tx:"#1E1536",d:"A full-stack college portal (2024).",l:"Building a full-stack college portal end to end.",s:["Full-stack","2024"],r:"Campus-connect",cmd:["<i>$</i> campus-connect","<em>full-stack</em> · 2024"]}];
+document.getElementById("spc").innerHTML=P.map((p,i)=>`<article class="spc-card" id="spc${i}"><div class="spc-tab-row"><button type="button" class="spc-tab" style="left:calc(var(--spc-tab-w,150px)*${i});background:${p.hex};color:${p.tx}" onclick="spcGo(${i})" aria-label="Jump to ${p.t}">${p.t}</button></div><div class="spc-panel" style="background:${p.hex};color:${p.tx}"><div><h3>${p.n}</h3><p>${p.d}</p><div class="spc-learned">What I learned</div><p class="spc-learned-p">${p.l}</p><ul class="spc-chips">${p.s.map(x=>`<li>${x}</li>`).join("")}</ul><div class="spc-actions"><a class="spc-btn spc-btn-solid" target="_blank" rel="noopener" href="${G+p.r}">View code</a></div></div><div class="spc-shot"><div class="spc-tape"></div><div class="spc-shot-frame"><div class="spc-term"><span class="term-path">github.com/rohith12kumar/${p.r}</span>${p.cmd.join("<br>")}</div></div></div></div></article>`).join("");
+function spcGo(j){document.getElementById("spc"+j).scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"instant":"smooth"})}
 const J=[
 {n:"Building & exploring",cur:1,dt:"Now",s:"Latest: Serverless REST API and CI/CD pipeline",c:"var(--gr)"},
 {n:"Cloud Engineer — AWS Projects (Self-Directed)",dt:"2025 – Present",s:"Edinburgh",c:"var(--bl)",b:["Built an EC2 + Nginx web server and a serverless REST API on AWS.","Set up a GitHub Actions CI/CD pipeline.","Self-studying for AWS Cloud Practitioner (CLF-C02 in progress)."],t:["AWS","EC2","Lambda","GitHub Actions"]},
